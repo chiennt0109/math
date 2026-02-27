@@ -115,6 +115,83 @@ public class QuestionGenerator {
                 correct = "1/2";
                 options = Arrays.asList("1/2", "1/3", "1/4", "1");
             }
+
+            // -------- LỚP 10 --------
+            case "Lớp 10 - Hàm số bậc hai - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị" -> {
+                int x = rand.nextInt(7) - 3;
+                text = "📘 Với f(x)=x²+2x+1, tính f(" + x + ")";
+                correct = String.valueOf(x * x + 2 * x + 1);
+                options = generateOptions(correct, 3);
+            }
+            case "Lớp 10 - Hàm số bậc hai - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị" -> {
+                text = "📈 Hàm y=x² có tính chất nào đúng?";
+                correct = "Nghịch biến trên (-∞,0), đồng biến trên (0,+∞)";
+                options = Arrays.asList(
+                        "Nghịch biến trên (-∞,0), đồng biến trên (0,+∞)",
+                        "Đồng biến trên R",
+                        "Nghịch biến trên R",
+                        "Không xác định trên R"
+                );
+            }
+            case "Lớp 10 - Hàm số bậc hai - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm" -> {
+                text = "🎯 Giá trị nhỏ nhất của y=(x-2)²+3 là?";
+                correct = "3";
+                options = Arrays.asList("3", "2", "-3", "0");
+            }
+            case "Lớp 10 - Hàm số bậc hai - Cấp 4: Tối ưu hoá thực tế, bài toán tích hợp, tham số" -> {
+                text = "🧠 Với m để phương trình x²-2x+m=0 có nghiệm kép, m bằng?";
+                correct = "1";
+                options = Arrays.asList("1", "-1", "2", "0");
+            }
+
+            // -------- LỚP 11 --------
+            case "Lớp 11 - Hàm lượng giác & liên tục - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị" -> {
+                text = "📘 Giá trị sin(0) bằng?";
+                correct = "0";
+                options = Arrays.asList("0", "1", "-1", "1/2");
+            }
+            case "Lớp 11 - Hàm lượng giác & liên tục - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị" -> {
+                text = "📈 Tập xác định của y=tan(x) là?";
+                correct = "R \\ {π/2 + kπ, k∈Z}";
+                options = Arrays.asList(
+                        "R \\ {π/2 + kπ, k∈Z}",
+                        "R",
+                        "x ≥ 0",
+                        "(-π/2, π/2)"
+                );
+            }
+            case "Lớp 11 - Hàm lượng giác & liên tục - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm" -> {
+                text = "🎯 GTLN của y=sin(x) là?";
+                correct = "1";
+                options = Arrays.asList("1", "0", "-1", "2");
+            }
+            case "Lớp 11 - Hàm lượng giác & liên tục - Cấp 4: Tối ưu hoá thực tế, bài toán tích hợp, tham số" -> {
+                text = "🧠 Nghiệm của sin(x)=0 trong [0,2π] là?";
+                correct = "0 và π và 2π";
+                options = Arrays.asList("0 và π và 2π", "π/2 và 3π/2", "chỉ π", "không có nghiệm");
+            }
+
+            // -------- LỚP 12 --------
+            case "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị" -> {
+                text = "📘 Giá trị ln(1) bằng?";
+                correct = "0";
+                options = Arrays.asList("0", "1", "e", "không xác định");
+            }
+            case "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị" -> {
+                text = "📈 Tập xác định của y=ln(x) là?";
+                correct = "x > 0";
+                options = Arrays.asList("x > 0", "x ≥ 0", "R", "x < 0");
+            }
+            case "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm" -> {
+                text = "🎯 Đạo hàm của y=x³ là?";
+                correct = "3x²";
+                options = Arrays.asList("3x²", "x²", "3x", "x³");
+            }
+            case "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 4: Tối ưu hoá thực tế, bài toán tích hợp, tham số" -> {
+                text = "🧠 Hàm f(x)=x+1/x (x>0) đạt GTNN tại x=?";
+                correct = "1";
+                options = Arrays.asList("1", "0", "2", "-1");
+            }
             default -> {
                 text = "⚙️ Câu hỏi không xác định chủ đề.";
                 correct = "Không biết";
