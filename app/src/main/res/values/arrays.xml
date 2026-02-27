@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="class_levels">
+        <item>Lớp 1</item>
+        <item>Lớp 2</item>
+        <item>Lớp 3</item>
+        <item>Lớp 4</item>
+        <item>Lớp 5</item>
+    </string-array>
+</resources>

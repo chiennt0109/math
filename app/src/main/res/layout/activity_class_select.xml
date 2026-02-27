@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#E8F5E9"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chọn khối lớp"
+        android:textColor="#1B5E20"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Danh sách các lớp -->
+    <ListView
+        android:id="@+id/lvClasses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="#A5D6A7"
+        android:dividerHeight="1dp"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:elevation="2dp" />
+
+</LinearLayout>

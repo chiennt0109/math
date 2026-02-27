@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:label="Math"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <!-- ✅ Splash là activity khởi động -->
+        <activity
+            android:name="com.ntc.math.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Các activity khác giữ nguyên -->
+        <activity android:name="com.ntc.math.ClassSelectActivity" />
+        <activity android:name="com.ntc.math.TopicSelectActivity" />
+        <activity android:name="com.ntc.math.QuestionActivity" />
+        <activity android:name="com.ntc.math.ProgressActivity" />
+
+    </application>
+</manifest>

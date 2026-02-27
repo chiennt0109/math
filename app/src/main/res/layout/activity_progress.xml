@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F4FF"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvSummary"
+        android:text="🎯 Điểm số"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#004AAD"
+        android:layout_marginBottom="12dp" />
+
+    <ProgressBar
+        android:id="@+id/progressCircle"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:max="100"
+        android:progressTint="#2196F3"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvSuggestion"
+        android:text="Gợi ý học tập"
+        android:textSize="18sp"
+        android:textColor="#333333"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnRetry"
+        android:text="🔁 Làm lại chủ đề này"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnHome"
+        android:text="🏠 Quay về chọn lớp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

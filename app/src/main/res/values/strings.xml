@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">math</string>
+    <string-array name="praise_messages">
+        <item>Tuyệt vời!</item>
+        <item>Chính xác!</item>
+        <item>Bạn làm tốt lắm!</item>
+        <item>Giỏi quá!</item>
+        <item>Đúng rồi!</item>
+    </string-array>
+
+    <string-array name="encouragement_messages">
+        <item>Cố gắng lên nhé!</item>
+        <item>Thử lại nào!</item>
+        <item>Sai một chút thôi!</item>
+        <item>Đừng nản lòng!</item>
+        <item>Lần sau sẽ đúng!</item>
+    </string-array>
+</resources>
