@@ -14,6 +14,10 @@ public class QuestionGenerator {
     private static final Map<String, List<Question>> VERTICAL_TOPIC_BANK = createVerticalTopicBank();
 
     public static List<Question> generate(String topic, String difficulty) {
+        return generate(topic, difficulty, 0);
+    }
+
+    public static List<Question> generate(String topic, String difficulty, int preferredLevel) {
         List<Question> list = new ArrayList<>();
 
         int count = switch (difficulty) {
@@ -21,6 +25,21 @@ public class QuestionGenerator {
             case "Trung bình" -> 7;
             default -> 10;
         };
+
+        if (VERTICAL_TOPIC_BANK.containsKey(topic)) {
+            List<Question> pool = VERTICAL_TOPIC_BANK.get(topic);
+            List<Question> filtered = new ArrayList<>();
+            if (preferredLevel >= 1) {
+                for (Question q : pool) {
+                    if (q.getLevel() == preferredLevel) filtered.add(q);
+                }
+            }
+            if (filtered.isEmpty()) filtered = pool;
+            for (int i = 0; i < count; i++) {
+                list.add(filtered.get(rand.nextInt(filtered.size())));
+            }
+            return list;
+        }
 
         for (int i = 0; i < count; i++) {
             Question q = createQuestion(topic, difficulty);
@@ -248,11 +267,10 @@ public class QuestionGenerator {
                              String correct) {
         String text = "Trục kiến thức: " + axis
                 + "\nLớp trọng tâm: " + focusClass
-                + "\nLoại: " + type
                 + "\nMức độ: " + level
                 + "\n" + prompt;
         map.computeIfAbsent(topic, k -> new ArrayList<>())
-                .add(new Question(text, 0, Arrays.asList(a, b, c, d), correct));
+                .add(new Question(text, 0, Arrays.asList(a, b, c, d), correct, type, level, topic + "|L" + level + "|" + axis));
     }
 
     private static List<String> generateOptions(String correct, int count) {
