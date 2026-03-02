@@ -9,6 +9,8 @@
 
     <TextView
         android:id="@+id/tvSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="🎯 Điểm số"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -26,6 +28,8 @@
 
     <TextView
         android:id="@+id/tvSuggestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Gợi ý học tập"
         android:textSize="18sp"
         android:textColor="#333333"

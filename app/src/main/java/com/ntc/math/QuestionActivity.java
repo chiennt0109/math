@@ -21,6 +21,7 @@ public class QuestionActivity extends AppCompatActivity {
     private String topic;
     private String difficulty;
     private int grade;
+    private int currentVerticalLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,12 @@ public class QuestionActivity extends AppCompatActivity {
         topic = getIntent().getStringExtra("topic");
         grade = getIntent().getIntExtra("grade", 1);
         difficulty = AdaptiveManager.getStartingDifficulty(this, topic);
+        currentVerticalLevel = AdaptiveManager.getCurrentVerticalLevel(this, topic);
 
         tvTopic.setText("📘 Chủ đề: " + topic);
-        tvDifficulty.setText("⚙️ Độ khó: " + difficulty);
+        tvDifficulty.setText("⚙️ Độ khó: " + difficulty + " | Cấp: " + currentVerticalLevel);
 
-        questions = QuestionGenerator.generate(topic, difficulty);
+        questions = QuestionGenerator.generate(topic, difficulty, currentVerticalLevel);
         loadQuestion();
 
         btnSubmit.setOnClickListener(v -> checkAnswer());
@@ -86,6 +88,23 @@ public class QuestionActivity extends AppCompatActivity {
         boolean isCorrect = ans.equals(q.getCorrectAnswer());
 
         AdaptiveManager.recordAnswer(this, topic, isCorrect);
+
+        int questionLevel = q.getLevel() > 0 ? q.getLevel() : currentVerticalLevel;
+        int updatedLevel = AdaptiveManager.recordVerticalAttempt(
+                this,
+                topic,
+                q.getSkillKey().isEmpty() ? (topic + "|L" + questionLevel) : q.getSkillKey(),
+                questionLevel,
+                isCorrect
+        );
+
+        if (updatedLevel != currentVerticalLevel) {
+            currentVerticalLevel = updatedLevel;
+            tvDifficulty.setText("⚙️ Độ khó: " + difficulty + " | Cấp: " + currentVerticalLevel);
+            questions = QuestionGenerator.generate(topic, difficulty, currentVerticalLevel);
+            current = Math.min(current, questions.size() - 1);
+            Toast.makeText(this, "🔁 Hệ thống tự điều chỉnh về cấp " + currentVerticalLevel, Toast.LENGTH_SHORT).show();
+        }
 
         if (isCorrect) {
             correctCount++;
