@@ -26,6 +26,11 @@ public class AdaptiveManager {
     private static final String KEY_LEVEL_CORRECT_PREFIX = "vertical_correct_";
     private static final String KEY_SKILL_WRONG_STREAK_PREFIX = "vertical_wrong_streak_";
 
+    private static final String KEY_VERTICAL_LEVEL_PREFIX = "vertical_level_";
+    private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
+    private static final String KEY_LEVEL_CORRECT_PREFIX = "vertical_correct_";
+    private static final String KEY_SKILL_WRONG_STREAK_PREFIX = "vertical_wrong_streak_";
+
     // ==========================================================
     // 🏫 Quản lý lớp học hiện tại (ClassSelectActivity dùng)
     // ==========================================================
