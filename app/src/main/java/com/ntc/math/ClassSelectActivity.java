@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * 🏫 ClassSelectActivity
- * - Màn hình chọn khối lớp (1–9)
+ * - Màn hình chọn khối lớp (1–12)
  * - Sau khi chọn, lưu lại lớp hiện tại qua AdaptiveManager
  * - Chuyển sang TopicSelectActivity
  */
@@ -34,7 +34,7 @@ public class ClassSelectActivity extends AppCompatActivity {
         tvTitle.setText("🎓 Chọn khối lớp của bạn");
 
         List<String> classes = new ArrayList<>();
-        for (int i = 1; i <= 9; i++) {
+        for (int i = 1; i <= 12; i++) {
             classes.add("Lớp " + i);
         }
 
