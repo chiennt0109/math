@@ -5,11 +5,7 @@ import java.util.List;
 /**
  * Question
  * ------------------
- * Lớp lưu trữ 1 câu hỏi trắc nghiệm:
- * - text: nội dung câu hỏi (có emoji)
- * - topicId: chỉ số hoặc mã chủ đề
- * - options: danh sách đáp án
- * - correctAnswer: đáp án đúng
+ * Lớp lưu trữ 1 câu hỏi trắc nghiệm.
  */
 public class Question {
 
@@ -18,11 +14,29 @@ public class Question {
     private final List<String> options;
     private final String correctAnswer;
 
+    // Metadata cho adaptive theo ma trận dọc
+    private final String learningType;
+    private final int level;
+    private final String skillKey;
+
     public Question(String text, int topicId, List<String> options, String correctAnswer) {
+        this(text, topicId, options, correctAnswer, "", 0, "");
+    }
+
+    public Question(String text,
+                    int topicId,
+                    List<String> options,
+                    String correctAnswer,
+                    String learningType,
+                    int level,
+                    String skillKey) {
         this.text = text;
         this.topicId = topicId;
         this.options = options;
         this.correctAnswer = correctAnswer;
+        this.learningType = learningType;
+        this.level = level;
+        this.skillKey = skillKey;
     }
 
     public String getText() {
@@ -39,5 +53,17 @@ public class Question {
 
     public String getCorrectAnswer() {
         return correctAnswer;
+    }
+
+    public String getLearningType() {
+        return learningType;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public String getSkillKey() {
+        return skillKey;
     }
 }
