@@ -21,12 +21,7 @@ public class AdaptiveManager {
     private static final String KEY_TOTAL_CORRECT = "total_correct";
     private static final String KEY_TOTAL_WRONG = "total_wrong";
 
-    private static final String KEY_VERTICAL_LEVEL_PREFIX = "vertical_level_";
-    private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
-    private static final String KEY_LEVEL_CORRECT_PREFIX = "vertical_correct_";
-    private static final String KEY_SKILL_WRONG_STREAK_PREFIX = "vertical_wrong_streak_";
-
-    private static final String KEY_VERTICAL_LEVEL_PREFIX = "vertical_level_";
+    private static final String KEY_VERTICAL_LEVEL = "vertical_level_";
     private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
     private static final String KEY_LEVEL_CORRECT_PREFIX = "vertical_correct_";
     private static final String KEY_SKILL_WRONG_STREAK_PREFIX = "vertical_wrong_streak_";
@@ -64,14 +59,14 @@ public class AdaptiveManager {
     public static int getCurrentVerticalLevel(Context ctx, String topic) {
         SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         int defaultLevel = extractLevelFromTopic(topic);
-        int lv = sp.getInt(KEY_VERTICAL_LEVEL_PREFIX + topic, defaultLevel);
+        int lv = sp.getInt(KEY_VERTICAL_LEVEL + topic, defaultLevel);
         return Math.max(1, Math.min(4, lv));
     }
 
     public static void setCurrentVerticalLevel(Context ctx, String topic, int level) {
         SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         int safe = Math.max(1, Math.min(4, level));
-        sp.edit().putInt(KEY_VERTICAL_LEVEL_PREFIX + topic, safe).apply();
+        sp.edit().putInt(KEY_VERTICAL_LEVEL + topic, safe).apply();
     }
 
     public static int recordVerticalAttempt(Context ctx,
@@ -103,7 +98,7 @@ public class AdaptiveManager {
         editor.putInt(levelAttemptKey, attempts);
         editor.putInt(levelCorrectKey, correct);
         editor.putInt(wrongStreakKey, wrongStreak);
-        editor.putInt(KEY_VERTICAL_LEVEL_PREFIX + topic, newLevel);
+        editor.putInt(KEY_VERTICAL_LEVEL + topic, newLevel);
         editor.apply();
         return newLevel;
     }
