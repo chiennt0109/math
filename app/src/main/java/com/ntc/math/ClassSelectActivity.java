@@ -28,6 +28,12 @@ public class ClassSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_class_select);
 
+        if (AdaptiveManager.isClassLocked(this)) {
+            startActivity(new Intent(this, TopicSelectActivity.class));
+            finish();
+            return;
+        }
+
         tvTitle = findViewById(R.id.tvTitle);
         lvClasses = findViewById(R.id.lvClasses);
 

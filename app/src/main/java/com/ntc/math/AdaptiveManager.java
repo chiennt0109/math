@@ -16,6 +16,15 @@ public class AdaptiveManager {
     private static final String PREF = "adaptive_math_v1_5";
     private static final double EMA_ALPHA = 0.5;
     private static final String KEY_CLASS = "current_class";
+    private static final String KEY_CLASS_LOCKED = "class_locked";
+    private static final String KEY_SUGGESTED_CLASS = "suggested_class";
+    private static final String KEY_TOTAL_CORRECT = "total_correct";
+    private static final String KEY_TOTAL_WRONG = "total_wrong";
+
+    private static final String KEY_VERTICAL_LEVEL_PREFIX = "vertical_level_";
+    private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
+    private static final String KEY_LEVEL_CORRECT_PREFIX = "vertical_correct_";
+    private static final String KEY_SKILL_WRONG_STREAK_PREFIX = "vertical_wrong_streak_";
 
     private static final String KEY_VERTICAL_LEVEL_PREFIX = "vertical_level_";
     private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
@@ -27,12 +36,28 @@ public class AdaptiveManager {
     // ==========================================================
     public static void setCurrentClass(Context ctx, int grade) {
         SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
-        sp.edit().putInt(KEY_CLASS, grade).apply();
+        sp.edit().putInt(KEY_CLASS, grade).putBoolean(KEY_CLASS_LOCKED, true).apply();
     }
 
     public static int getCurrentClass(Context ctx) {
         SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         return sp.getInt(KEY_CLASS, 1);
+    }
+
+    public static boolean isClassLocked(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getBoolean(KEY_CLASS_LOCKED, false);
+    }
+
+    public static int getSuggestedClass(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getInt(KEY_SUGGESTED_CLASS, getCurrentClass(ctx));
+    }
+
+    public static void updateSuggestedClass(Context ctx, int suggestedClass) {
+        int safe = Math.max(1, Math.min(12, suggestedClass));
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        sp.edit().putInt(KEY_SUGGESTED_CLASS, safe).apply();
     }
 
 
@@ -98,7 +123,15 @@ public class AdaptiveManager {
         SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
         float oldEma = sp.getFloat(topic, 0.5f);
         float newEma = (float) (EMA_ALPHA * (isCorrect ? 1.0 : 0.0) + (1 - EMA_ALPHA) * oldEma);
-        sp.edit().putFloat(topic, newEma).apply();
+
+        int totalCorrect = sp.getInt(KEY_TOTAL_CORRECT, 0) + (isCorrect ? 1 : 0);
+        int totalWrong = sp.getInt(KEY_TOTAL_WRONG, 0) + (isCorrect ? 0 : 1);
+
+        sp.edit()
+                .putFloat(topic, newEma)
+                .putInt(KEY_TOTAL_CORRECT, totalCorrect)
+                .putInt(KEY_TOTAL_WRONG, totalWrong)
+                .apply();
     }
 
     public static void onSessionEnd(Context ctx, String topic, float score) {
@@ -219,6 +252,24 @@ public class AdaptiveManager {
         float ema = sp.getFloat(topic, 0.5f);
         ema = Math.max(0.0f, ema - 0.1f);
         sp.edit().putFloat(topic, ema).apply();
+    }
+
+    public static int getTotalCorrect(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getInt(KEY_TOTAL_CORRECT, 0);
+    }
+
+    public static int getTotalWrong(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getInt(KEY_TOTAL_WRONG, 0);
+    }
+
+    public static float getOverallAccuracy(Context ctx) {
+        int c = getTotalCorrect(ctx);
+        int w = getTotalWrong(ctx);
+        int total = c + w;
+        if (total == 0) return 0f;
+        return (c * 100f) / total;
     }
 
     // ==========================================================
