@@ -16,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // Giữ splash trong 2 giây rồi chuyển sang ClassSelectActivity
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, ClassSelectActivity.class);
+            Intent intent = new Intent(SplashActivity.this, AdaptiveManager.isClassLocked(this) ? TopicSelectActivity.class : ClassSelectActivity.class);
             startActivity(intent);
             finish();
         }, 2000);

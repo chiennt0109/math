@@ -28,6 +28,16 @@
         android:textColor="#BF360C"
         android:layout_marginBottom="16dp" />
 
+
+    <Button
+        android:id="@+id/btnStats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📊 Xem thống kê"
+        android:backgroundTint="#1976D2"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="10dp" />
+
     <!-- Danh sách chủ đề -->
     <ListView
         android:id="@+id/lvTopics"

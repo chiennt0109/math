@@ -25,6 +25,7 @@
         <activity android:name="com.ntc.math.TopicSelectActivity" />
         <activity android:name="com.ntc.math.QuestionActivity" />
         <activity android:name="com.ntc.math.ProgressActivity" />
+        <activity android:name="com.ntc.math.StatsActivity" />
 
     </application>
 </manifest>
