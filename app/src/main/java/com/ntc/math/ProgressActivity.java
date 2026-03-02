@@ -22,6 +22,7 @@ public class ProgressActivity extends AppCompatActivity {
 
     private String topic;
     private float score;
+    private int currentClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class ProgressActivity extends AppCompatActivity {
 
         topic = getIntent().getStringExtra("topic");
         score = getIntent().getFloatExtra("score", 0f);
+        currentClass = AdaptiveManager.getCurrentClass(this);
 
         showResult();
         setupButtons();
@@ -55,14 +57,23 @@ public class ProgressActivity extends AppCompatActivity {
     }
 
     private String getSuggestionText(float score, String diff) {
+        int suggestedClass = currentClass;
         if (score >= 85) {
             AdaptiveManager.increaseDifficulty(this, topic);
-            return "🌟 Bạn làm rất tốt! Hệ thống sẽ tăng độ khó trong buổi tới.";
-        } else if (score >= 60) {
-            return "👍 Kết quả khá tốt! Hãy giữ vững phong độ ở độ khó '" + diff + "'.";
-        } else {
+            suggestedClass = Math.min(12, currentClass + 1);
+        } else if (score < 40) {
             AdaptiveManager.decreaseDifficulty(this, topic);
-            return "💪 Hãy luyện thêm nhé. Hệ thống sẽ giảm độ khó để bạn ôn tập dễ hơn.";
+            suggestedClass = Math.max(1, currentClass - 1);
+        }
+
+        AdaptiveManager.updateSuggestedClass(this, suggestedClass);
+
+        if (score >= 85) {
+            return "🌟 Bạn làm rất tốt! Gợi ý hiện tại: thử sức nội dung gần mức Lớp " + suggestedClass + ".";
+        } else if (score >= 60) {
+            return "👍 Kết quả khá tốt! Hãy giữ vững phong độ ở độ khó '" + diff + "'. Gợi ý cấp học: Lớp " + suggestedClass + ".";
+        } else {
+            return "💪 Hãy luyện thêm nhé. Hệ thống sẽ lùi mức để củng cố nền tảng. Gợi ý cấp học: Lớp " + suggestedClass + ".";
         }
     }
 
@@ -76,7 +87,7 @@ public class ProgressActivity extends AppCompatActivity {
         });
 
         btnHome.setOnClickListener(v -> {
-            Intent i = new Intent(this, ClassSelectActivity.class);
+            Intent i = new Intent(this, TopicSelectActivity.class);
             startActivity(i);
             finish();
         });
