@@ -187,68 +187,69 @@ public class QuestionGenerator {
             map.put(topic, new ArrayList<>());
         }
 
-        // 50 câu theo ma trận dọc (không bị giới hạn khối hiện tại)
-        addV(map, topics.get(0), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 1, "Khái niệm hàm số nào từ THCS cần nhắc lại trước khi học f(x)=ax²+bx+c?", "Mỗi x cho tối đa một y", "Mỗi y cho một x", "f(x) luôn dương", "Đồ thị luôn là đường thẳng", "Mỗi x cho tối đa một y");
-        addV(map, topics.get(0), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 2, "Từ bảng giá trị hàm bậc hai lớp 10, bước TIẾN phù hợp cho lớp 11 là gì?", "Đọc tính tuần hoàn đồ thị", "Học tích phân từng phần", "Đổi biến logarit", "Bỏ qua đồ thị", "Đọc tính tuần hoàn đồ thị");
-        addV(map, topics.get(0), "Hình học giải tích", 10, "TÍCH HỢP", 2, "Khi nhận dạng parabol, kiến thức hình học giải tích nào được tích hợp trực tiếp?", "Tọa độ đỉnh và trục đối xứng", "Quy tắc cộng xác suất", "Công thức nhị thức", "Định nghĩa đạo hàm", "Tọa độ đỉnh và trục đối xứng");
-        addV(map, topics.get(0), "Tổ hợp – xác suất", 10, "TIẾN", 2, "Tình huống sư phạm: để học sinh thấy liên môn, giáo viên nên làm gì?", "Dùng bảng tần số giá trị hàm để dự đoán xác suất", "Chỉ cho chép công thức", "Bỏ phần ví dụ", "Không cho thảo luận", "Dùng bảng tần số giá trị hàm để dự đoán xác suất");
+        // Demo theo CTGDPT 2018 Toán THPT (50 câu)
+        addV(map, topics.get(0), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 1, "Cho f(x)=x²-2x+3. Giá trị f(2) bằng?", "3", "1", "0", "5", "3");
+        addV(map, topics.get(0), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 1, "Đồ thị y=ax² (a>0) có dạng nào?", "Parabol mở lên", "Đường thẳng", "Hypebol", "Elip", "Parabol mở lên");
+        addV(map, topics.get(0), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 2, "Trong hàm bậc hai y=ax²+bx+c, trục đối xứng là?", "x=-b/(2a)", "x=b/(2a)", "y=-b/(2a)", "x=-c/(2a)", "x=-b/(2a)");
+        addV(map, topics.get(0), "Hình học giải tích", 10, "TÍCH HỢP", 2, "Đỉnh của y=x²-4x+1 là?", "(2,-3)", "(-2,-3)", "(2,3)", "(4,1)", "(2,-3)");
 
-        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Xét đồng biến/nghịch biến ở lớp 10 chuẩn bị tốt nhất cho năng lực nào lớp 12?", "Lập bảng biến thiên bằng đạo hàm", "Tính chỉnh hợp", "Chứng minh vuông góc", "Giải logarit", "Lập bảng biến thiên bằng đạo hàm");
-        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 2, "Trước khi xét đơn điệu, học sinh cần LÙI về thao tác nào?", "Tính giá trị hàm tại vài điểm", "Tính tích phân", "Giải xác suất có điều kiện", "Dùng tọa độ cực", "Tính giá trị hàm tại vài điểm");
-        addV(map, topics.get(1), "Hình học giải tích", 11, "TÍCH HỢP", 3, "Vẽ đồ thị cơ bản giúp TIẾN sang nội dung nào của lượng giác lớp 11?", "So sánh dạng đồ thị tuần hoàn", "Khai triển Newton", "Chỉnh hợp lặp", "Nguyên lý bù trừ", "So sánh dạng đồ thị tuần hoàn");
-        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Bài toán cụ thể: để dự đoán cực trị nhanh, học sinh nên ưu tiên gì ở cấp 2?", "Quan sát chiều biến thiên và điểm nghi ngờ", "Nhớ công thức tổ hợp", "Đổi sang hình không gian", "Bấm máy không kiểm tra", "Quan sát chiều biến thiên và điểm nghi ngờ");
+        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 2, "Hàm y=x² đồng biến trên khoảng nào?", "(0,+∞)", "(-∞,0)", "R", "Không có", "(0,+∞)");
+        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 2, "Tập xác định của y=1/(x-2) là?", "R\\{2}", "R", "x>2", "x<2", "R\\{2}");
+        addV(map, topics.get(1), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 2, "Với y=-x²+2x+3, hàm số đạt GTLN tại x=?", "1", "-1", "2", "3", "1");
+        addV(map, topics.get(1), "Hình học giải tích", 10, "TÍCH HỢP", 2, "Đồ thị y=(x-1)²+2 là đồ thị y=x² được?", "Tịnh tiến sang phải 1, lên 2", "Tịnh tiến trái 1, lên 2", "Co giãn theo Ox", "Đối xứng qua Oy", "Tịnh tiến sang phải 1, lên 2");
 
-        addV(map, topics.get(2), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 3, "GTLN-GTNN của parabol cần củng cố công cụ nào?", "Hoàn thành bình phương", "Hoán vị", "Định lý cos", "Biến đổi logarit", "Hoàn thành bình phương");
-        addV(map, topics.get(2), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Biện luận nghiệm phương trình bậc hai là nền cho chuyên đề nào lớp 12?", "Tương giao đồ thị khi khảo sát hàm", "Xác suất nhị thức", "Elip chính tắc", "Số phức", "Tương giao đồ thị khi khảo sát hàm");
-        addV(map, topics.get(2), "Hình học giải tích", 10, "TÍCH HỢP", 3, "Cực trị hàm bậc hai gắn hình học giải tích như thế nào?", "Tung độ đỉnh là GTLN/GTNN", "Bán kính đường tròn ngẫu nhiên", "Cạnh tam giác đều", "Tâm ngoại tiếp", "Tung độ đỉnh là GTLN/GTNN");
-        addV(map, topics.get(2), "Tổ hợp – xác suất", 11, "TIẾN", 3, "Tình huống sư phạm: học sinh vượt chuẩn lớp 10, nên TIẾN bằng hoạt động nào?", "Mô phỏng nhiều bộ hệ số rồi phân loại số nghiệm", "Giảm bài về chỉ tính nhanh", "Bỏ phần giải thích", "Không phản hồi sai lầm", "Mô phỏng nhiều bộ hệ số rồi phân loại số nghiệm");
+        addV(map, topics.get(2), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 3, "GTLN của y=-x²+4x-1 là?", "3", "1", "-1", "4", "3");
+        addV(map, topics.get(2), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 3, "Phương trình x²-5x+6=0 có số nghiệm thực là?", "2", "1", "0", "Vô số", "2");
+        addV(map, topics.get(2), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 3, "Δ của x²-4x+4 là?", "0", "4", "-4", "8", "0");
+        addV(map, topics.get(2), "Hình học giải tích", 10, "TÍCH HỢP", 3, "Parabol y=x²-2x+2 có GTNN bằng?", "1", "0", "2", "-1", "1");
 
-        addV(map, topics.get(3), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 5, "Bài toán tối ưu lớp 10 nên TIẾN trực tiếp đến năng lực nào lớp 12?", "Lập mô hình tối ưu bằng đạo hàm", "Đếm chỉnh hợp", "Vẽ biểu đồ cột", "Giải phương trình lượng giác", "Lập mô hình tối ưu bằng đạo hàm");
-        addV(map, topics.get(3), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 4, "Khi tối ưu thất bại, bước LÙI hợp lý là gì?", "Quay lại lập hàm mục tiêu đúng biến", "Đổi sang chương xác suất", "Bỏ điều kiện", "Chỉ đoán kết quả", "Quay lại lập hàm mục tiêu đúng biến");
-        addV(map, topics.get(3), "Hình học giải tích", 12, "TÍCH HỢP", 5, "Tối ưu hóa có tham số có thể tích hợp dọc với nội dung nào?", "Khoảng cách điểm-đường trong Oxy", "Quy tắc cộng xác suất", "Bảng sin cos", "Lãi kép", "Khoảng cách điểm-đường trong Oxy");
-        addV(map, topics.get(3), "Tổ hợp – xác suất", 11, "TÍCH HỢP", 4, "Bài toán tích hợp: chọn phương án đúng.", "Mô phỏng ngẫu nhiên để kiểm chứng nghiệm tối ưu", "Chỉ giữ 1 trường hợp", "Bỏ đơn vị đo", "Không kiểm tra điều kiện", "Mô phỏng ngẫu nhiên để kiểm chứng nghiệm tối ưu");
-        addV(map, topics.get(3), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 5, "Hàm chứa tham số ở cấp 4 nên đánh giá theo tiêu chí nào?", "Lập luận điều kiện tham số theo mục tiêu bài toán", "Thuộc lòng kết quả", "Chọn đáp án dài nhất", "Chỉ xét 1 điểm", "Lập luận điều kiện tham số theo mục tiêu bài toán");
+        addV(map, topics.get(3), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 4, "Hình chữ nhật có chu vi 20, diện tích lớn nhất khi?", "Là hình vuông cạnh 5", "Dài 8 rộng 2", "Dài 6 rộng 4", "Dài 9 rộng 1", "Là hình vuông cạnh 5");
+        addV(map, topics.get(3), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 4, "Để phương trình x²-2(m+1)x+m²=0 có nghiệm kép thì m=?", "1", "0", "-1", "2", "1");
+        addV(map, topics.get(3), "Tổ hợp – xác suất", 10, "TÍCH HỢP", 4, "Mô phỏng tối ưu hoá bằng dữ liệu ngẫu nhiên giúp mục tiêu nào?", "Kiểm chứng mô hình", "Bỏ điều kiện", "Thay chứng minh", "Giảm độ khó", "Kiểm chứng mô hình");
+        addV(map, topics.get(3), "Hình học giải tích", 11, "TÍCH HỢP", 4, "Bài toán tối ưu khoảng cách trong Oxy thường đưa về?", "Xét cực trị hàm một biến", "Giải tổ hợp", "Đếm chỉnh hợp", "Hệ ba ẩn", "Xét cực trị hàm một biến");
 
-        addV(map, topics.get(4), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 1, "Trước khi học lượng giác, học sinh cần LÙI về đơn vị đo nào?", "Radian và độ", "Mét và cm", "kg và g", "Lít và ml", "Radian và độ");
-        addV(map, topics.get(4), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 2, "Nhận dạng đồ thị sin/cos dựa trên kiến thức nền nào từ lớp 10?", "Đọc biến thiên cơ bản của đồ thị", "Đếm hoán vị", "Giải hệ 3 ẩn", "Tính tích phân", "Đọc biến thiên cơ bản của đồ thị");
-        addV(map, topics.get(4), "Hình học giải tích", 11, "TÍCH HỢP", 2, "Đường tròn lượng giác tích hợp trực tiếp với trục nào?", "Tọa độ điểm trên đường tròn đơn vị", "Công thức nhị thức", "Biến cố đối", "Dãy số", "Tọa độ điểm trên đường tròn đơn vị");
-        addV(map, topics.get(4), "Tổ hợp – xác suất", 12, "TIẾN", 2, "Dạy nhận dạng đồ thị lượng giác có thể TIẾN cho xác suất bằng cách nào?", "Mô hình hóa dao động tuần hoàn thành dữ liệu", "Bỏ dữ liệu thực tế", "Chỉ đưa đáp án", "Không thảo luận", "Mô hình hóa dao động tuần hoàn thành dữ liệu");
+        addV(map, topics.get(4), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 1, "Giá trị sin(0) là?", "0", "1", "-1", "1/2", "0");
+        addV(map, topics.get(4), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 1, "Giá trị cos(0) là?", "1", "0", "-1", "1/2", "1");
+        addV(map, topics.get(4), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 2, "Chu kì của hàm y=sin x là?", "2π", "π", "4π", "1", "2π");
+        addV(map, topics.get(4), "Hình học giải tích", 11, "TÍCH HỢP", 2, "Điểm M(cos t, sin t) luôn thuộc?", "Đường tròn đơn vị", "Parabol", "Elip", "Hypebol", "Đường tròn đơn vị");
 
-        addV(map, topics.get(5), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 2, "Tập xác định của tan(x) cần củng cố ý nào?", "Điểm làm mẫu số bằng 0", "Đỉnh parabol", "Công sai cấp số", "Biến cố độc lập", "Điểm làm mẫu số bằng 0");
-        addV(map, topics.get(5), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Xét đơn điệu hàm lượng giác chuẩn bị cho bài nào lớp 12?", "Dùng đạo hàm đánh giá biến thiên", "Tính C(n,k)", "Phương trình elip", "Nguyên lý Dirichlet", "Dùng đạo hàm đánh giá biến thiên");
-        addV(map, topics.get(5), "Hình học giải tích", 11, "TÍCH HỢP", 3, "Vẽ đồ thị cơ bản lượng giác kết nối hình học giải tích qua nội dung nào?", "Tịnh tiến và co giãn đồ thị", "Đếm hoán vị lặp", "Bảng phân phối", "Giải logarit", "Tịnh tiến và co giãn đồ thị");
-        addV(map, topics.get(5), "Tổ hợp – xác suất", 10, "LÙI", 2, "Nếu học sinh yếu biến đổi đại số, bước LÙI phù hợp?", "Rút gọn biểu thức trước khi xét tập xác định", "Nhảy sang đạo hàm", "Làm đề nâng cao", "Bỏ phần giải", "Rút gọn biểu thức trước khi xét tập xác định");
+        addV(map, topics.get(5), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 2, "Tập xác định của y=tan x là?", "R\\{π/2+kπ}", "R", "x>0", "x<0", "R\\{π/2+kπ}");
+        addV(map, topics.get(5), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 2, "Hàm y=sin x đồng biến trên?", "(-π/2,π/2)", "(0,π)", "(π,2π)", "R", "(-π/2,π/2)");
+        addV(map, topics.get(5), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 2, "Hàm liên tục trên đoạn [a,b] thì luôn?", "Có GTLN và GTNN", "Có đạo hàm", "Đơn điệu", "Có nghiệm duy nhất", "Có GTLN và GTNN");
+        addV(map, topics.get(5), "Hình học giải tích", 11, "TÍCH HỢP", 3, "Để vẽ y=2sin x, từ y=sin x ta?", "Co giãn theo Oy hệ số 2", "Tịnh tiến phải 2", "Đối xứng qua Ox", "Đổi chu kì", "Co giãn theo Oy hệ số 2");
 
-        addV(map, topics.get(6), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 3, "GTLN-GTNN của sin/cos cần nhắc lại miền giá trị nào?", "[-1,1]", "[0,+∞)", "R", "(0,1)", "[-1,1]");
-        addV(map, topics.get(6), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Tìm cực trị lượng giác là tiền đề của kỹ thuật nào lớp 12?", "Xử lý phương trình đạo hàm bằng lượng giác", "Đếm biến cố", "Vẽ hypebol", "Tính xác suất có điều kiện", "Xử lý phương trình đạo hàm bằng lượng giác");
-        addV(map, topics.get(6), "Hình học giải tích", 12, "TÍCH HỢP", 4, "Biện luận nghiệm lượng giác có thể tích hợp với hình học giải tích bằng cách nào?", "Diễn giải nghiệm bằng giao điểm đồ thị", "Đổi sang nhị thức", "Bỏ biểu diễn hình", "Chỉ thay số", "Diễn giải nghiệm bằng giao điểm đồ thị");
-        addV(map, topics.get(6), "Tổ hợp – xác suất", 11, "TÍCH HỢP", 3, "Câu lý thuyết: tích hợp dọc hiệu quả khi nào?", "Kết quả lượng giác được dùng làm dữ liệu xác suất", "Tách rời hoàn toàn chủ đề", "Không kiểm tra nền", "Chỉ học thuộc", "Kết quả lượng giác được dùng làm dữ liệu xác suất");
+        addV(map, topics.get(6), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 3, "GTLN của y=sin x là?", "1", "0", "-1", "2", "1");
+        addV(map, topics.get(6), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 3, "Phương trình sin x = 1/2 có nghiệm tổng quát?", "x=π/6+k2π hoặc 5π/6+k2π", "x=kπ", "x=π/2+kπ", "x=2kπ", "x=π/6+k2π hoặc 5π/6+k2π");
+        addV(map, topics.get(6), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 3, "Nếu f liên tục và f(a)f(b)<0 thì tồn tại c∈(a,b) sao cho?", "f(c)=0", "f'(c)=0", "f(c)=1", "f(c)>0", "f(c)=0");
+        addV(map, topics.get(6), "Tổ hợp – xác suất", 11, "TÍCH HỢP", 3, "Biên độ dao động lượng giác được dùng trong xác suất để?", "Mô hình hóa hiện tượng tuần hoàn", "Tính chỉnh hợp", "Giải logarit", "Vẽ hypebol", "Mô hình hóa hiện tượng tuần hoàn");
 
-        addV(map, topics.get(7), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 5, "Tối ưu hóa thực tế với lượng giác nên TIẾN lên đâu?", "Bài toán cực trị có ràng buộc bằng đạo hàm", "Tính giai thừa", "Vẽ đồ thị cột", "Giải hệ tuyến tính", "Bài toán cực trị có ràng buộc bằng đạo hàm");
-        addV(map, topics.get(7), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 4, "Khi học sinh vướng mô hình, bước LÙI tốt nhất?", "Quay lại xác định biến và miền giá trị", "Chuyển chương mới", "Chỉ đưa đáp số", "Bỏ điều kiện", "Quay lại xác định biến và miền giá trị");
-        addV(map, topics.get(7), "Hình học giải tích", 12, "TÍCH HỢP", 5, "Bài toán tích hợp dọc: chọn hướng đúng.", "Kết nối góc lượng giác với tiếp tuyến đồ thị", "Đếm chập k", "Tính xác suất toàn phần", "Không cần hình", "Kết nối góc lượng giác với tiếp tuyến đồ thị");
-        addV(map, topics.get(7), "Tổ hợp – xác suất", 11, "TIẾN", 4, "Tình huống sư phạm: học sinh vượt chuẩn nên làm gì?", "Giao dự án mô phỏng dao động + xác suất", "Giảm xuống bài chép", "Không cho phản biện", "Chỉ trắc nghiệm nhớ", "Giao dự án mô phỏng dao động + xác suất");
+        addV(map, topics.get(7), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 4, "Bài toán góc nâng hạ theo thời gian thường mô hình bằng?", "Hàm lượng giác", "Hàm hằng", "Đa thức bậc 1", "Hàm log", "Hàm lượng giác");
+        addV(map, topics.get(7), "Hàm số – đạo hàm – tích phân", 11, "TIẾN", 4, "Để cực đại hóa A sin x + B cos x, ta dùng?", "Biến đổi về R sin(x+φ)", "Đạo hàm cấp hai ngay", "Lập bảng tổ hợp", "Bất đẳng thức AM-GM", "Biến đổi về R sin(x+φ)");
+        addV(map, topics.get(7), "Hình học giải tích", 12, "TÍCH HỢP", 4, "Từ mô hình dao động, bước TIẾN lớp 12 phù hợp là?", "Dùng đạo hàm tìm thời điểm cực đại", "Giải hệ 3 ẩn", "Đếm nhị thức", "Đổi sang tích phân ngay", "Dùng đạo hàm tìm thời điểm cực đại");
+        addV(map, topics.get(7), "Tổ hợp – xác suất", 12, "TÍCH HỢP", 4, "Bài toán tích hợp dữ liệu cảm biến theo chu kì phục vụ?", "Dự báo xác suất vượt ngưỡng", "Tính diện tích tam giác", "Giải hệ tuyến tính", "Tính thể tích", "Dự báo xác suất vượt ngưỡng");
 
-        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 1, "Khái niệm ln(x) cần quay lại kiến thức nền nào?", "Điều kiện x>0", "x bất kỳ", "x<0", "x=0", "Điều kiện x>0");
-        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 10, "LÙI", 2, "Trước khi học e^x, nên củng cố năng lực nào từ lớp 10?", "Thay số tính giá trị hàm", "Tính diện tích hình tròn", "Đếm chỉnh hợp", "Chứng minh vuông góc", "Thay số tính giá trị hàm");
-        addV(map, topics.get(8), "Hình học giải tích", 12, "TÍCH HỢP", 2, "Nhận dạng đồ thị mũ/logarit tích hợp hình học qua gì?", "Quan sát tiệm cận và giao trục", "Tổ hợp lặp", "Biến cố độc lập", "Định nghĩa xác suất", "Quan sát tiệm cận và giao trục");
-        addV(map, topics.get(8), "Tổ hợp – xác suất", 11, "TIẾN", 2, "Có thể TIẾN theo chiều dọc bằng hoạt động nào?", "So sánh tăng trưởng mũ với mô hình xác suất", "Chỉ làm bài đóng", "Bỏ giải thích", "Không phản hồi", "So sánh tăng trưởng mũ với mô hình xác suất");
+        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 1, "Giá trị ln(1)=?", "0", "1", "e", "không xác định", "0");
+        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 1, "Tập xác định của y=log₂x là?", "x>0", "x≥0", "R", "x<0", "x>0");
+        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 2, "Đạo hàm của y=e^x là?", "e^x", "x e^x", "1/x", "ln x", "e^x");
+        addV(map, topics.get(8), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 2, "Đạo hàm của y=ln x là?", "1/x", "x", "ln x", "e^x", "1/x");
 
-        addV(map, topics.get(9), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 2, "Tập xác định ln(g(x)) yêu cầu LÙI kiểm tra gì?", "g(x) > 0", "g(x)=0", "g(x)<0", "Không cần điều kiện", "g(x) > 0");
-        addV(map, topics.get(9), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Xét đơn điệu hàm mũ/logarit chuẩn bị cho dạng nào?", "Bất phương trình mũ-logarit", "Tổ hợp chập", "Định lý sin", "Đường tròn", "Bất phương trình mũ-logarit");
-        addV(map, topics.get(9), "Hình học giải tích", 10, "LÙI", 2, "Nếu học sinh nhầm đồ thị, cần LÙI về kỹ năng nào?", "Vẽ hệ trục và lấy điểm chuẩn", "Tính đạo hàm bậc hai", "Giải xác suất", "Biện luận tham số", "Vẽ hệ trục và lấy điểm chuẩn");
-        addV(map, topics.get(9), "Tổ hợp – xác suất", 12, "TÍCH HỢP", 3, "Bài toán cụ thể: tích hợp dọc giữa mũ-logarit và xác suất là gì?", "Mô hình phân rã phóng xạ với xác suất sống sót", "Đếm tam giác", "Giải hệ tuyến tính", "Tính chu vi", "Mô hình phân rã phóng xạ với xác suất sống sót");
+        addV(map, topics.get(9), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 2, "Hàm y=ln x đồng biến trên?", "(0,+∞)", "R", "(-∞,0)", "[0,+∞)", "(0,+∞)");
+        addV(map, topics.get(9), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 2, "Hàm y=a^x (a>1) có tính chất?", "Đồng biến trên R", "Nghịch biến trên R", "Không liên tục", "Không xác định tại 0", "Đồng biến trên R");
+        addV(map, topics.get(9), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 2, "Nghiệm của log₂x = 3 là?", "8", "6", "9", "3", "8");
+        addV(map, topics.get(9), "Tổ hợp – xác suất", 12, "TÍCH HỢP", 3, "Tăng trưởng mũ thường dùng để mô tả?", "Dân số/lãi kép", "Chu vi tam giác", "Tịnh tiến vectơ", "Đường tròn", "Dân số/lãi kép");
 
-        addV(map, topics.get(10), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 3, "Trước khi tìm cực trị bằng đạo hàm, cần ôn gì?", "Quy tắc đạo hàm cơ bản", "Công thức tổ hợp", "Định lý cos", "Tỉ lệ thức", "Quy tắc đạo hàm cơ bản");
-        addV(map, topics.get(10), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Biện luận nghiệm f'(x)=0 hỗ trợ năng lực nào?", "Đọc bản chất điểm cực trị", "Đếm biến cố", "Vẽ hypebol", "Tính xác suất", "Đọc bản chất điểm cực trị");
-        addV(map, topics.get(10), "Hình học giải tích", 11, "TÍCH HỢP", 4, "Cực trị hàm số kết nối hình học giải tích qua đâu?", "Tiếp tuyến song song trục Ox", "Đường tròn ngoại tiếp", "Tổ hợp lặp", "Số trung bình", "Tiếp tuyến song song trục Ox");
-        addV(map, topics.get(10), "Tổ hợp – xác suất", 12, "TIẾN", 4, "Tình huống sư phạm: học sinh vượt chuẩn lớp 12 nên TIẾN ra sao?", "Làm dự án tối ưu có nhiễu xác suất", "Giảm về bài thay số", "Chỉ học thuộc", "Không yêu cầu giải thích", "Làm dự án tối ưu có nhiễu xác suất");
+        addV(map, topics.get(10), "Hàm số – đạo hàm – tích phân", 12, "LÙI", 3, "Nếu f'(x)>0 trên (a,b) thì f?", "Đồng biến trên (a,b)", "Nghịch biến", "Không đổi", "Không kết luận", "Đồng biến trên (a,b)");
+        addV(map, topics.get(10), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Điểm cực trị của hàm số thường là nghiệm của?", "f'(x)=0 hoặc không xác định", "f(x)=0", "f''(x)=0", "f(x)=1", "f'(x)=0 hoặc không xác định");
+        addV(map, topics.get(10), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 3, "Để tìm GTLN-GTNN trên [a,b], cần xét?", "Cực trị trong khoảng và hai đầu mút", "Chỉ đầu mút", "Chỉ điểm f'=0", "Chỉ điểm giữa", "Cực trị trong khoảng và hai đầu mút");
+        addV(map, topics.get(10), "Hình học giải tích", 12, "TÍCH HỢP", 3, "Hệ số góc tiếp tuyến đồ thị tại x0 bằng?", "f'(x0)", "f(x0)", "1/f'(x0)", "-f'(x0)", "f'(x0)");
 
-        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 5, "Bài toán tối ưu hóa thực tế ở cấp 4 cần sản phẩm nào?", "Mô hình hàm + lập luận nghiệm tối ưu", "Chỉ nêu đáp số", "Liệt kê công thức", "Bỏ dữ kiện", "Mô hình hàm + lập luận nghiệm tối ưu");
-        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 11, "LÙI", 4, "Khi sai hàng loạt ở tối ưu, nên LÙI về đâu?", "Phân tích đơn vị và điều kiện thực tế", "Chuyển sang chương khác", "Bỏ bài toán", "Chấm theo cảm tính", "Phân tích đơn vị và điều kiện thực tế");
-        addV(map, topics.get(11), "Hình học giải tích", 12, "TÍCH HỢP", 5, "Hàm có tham số tích hợp dọc tốt nhất với chủ đề nào?", "Vị trí tương đối đường thẳng - đường cong", "Tổ hợp chập k", "Xác suất toàn phần", "Cấp số nhân", "Vị trí tương đối đường thẳng - đường cong");
-        addV(map, topics.get(11), "Tổ hợp – xác suất", 12, "TÍCH HỢP", 5, "Câu tư duy tổ chức chương trình: dấu hiệu cá nhân hóa tốt là gì?", "Hệ thống tự lùi/tiến theo năng lực ở cùng trục", "Cố định một lộ trình", "Chỉ kiểm tra cuối kỳ", "Bỏ theo dõi tiến trình", "Hệ thống tự lùi/tiến theo năng lực ở cùng trục");
-        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 10, "TIẾN", 4, "Câu lý thuyết: ma trận dọc hiệu quả nhất khi nào?", "Mỗi cấp năng lực có điểm nối lên/xuống rõ ràng", "Chia cứng theo lớp", "Không có tiêu chí", "Chỉ dạy theo đề thi", "Mỗi cấp năng lực có điểm nối lên/xuống rõ ràng");
+        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Tích phân ∫_0^1 2x dx bằng?", "1", "2", "0", "1/2", "1");
+        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Nguyên hàm của 3x² là?", "x³ + C", "3x + C", "x² + C", "6x + C", "x³ + C");
+        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TÍCH HỢP", 4, "Diện tích hình phẳng giới hạn bởi y=x và Ox trên [0,2] là?", "2", "1", "4", "0", "2");
+        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Bài toán lãi kép tối ưu thời gian thường dùng hàm?", "Mũ - logarit", "Bậc nhất", "Hằng số", "Lượng giác", "Mũ - logarit");
+
+        addV(map, topics.get(11), "Hàm số – đạo hàm – tích phân", 12, "TIẾN", 4, "Trong tối ưu chi phí, bước đúng đầu tiên là?", "Lập hàm mục tiêu theo biến", "Tính đạo hàm cấp hai ngay", "Đoán đáp án", "Bỏ điều kiện ràng buộc", "Lập hàm mục tiêu theo biến");
+        addV(map, topics.get(10), "Tổ hợp – xác suất", 12, "TÍCH HỢP", 4, "Phân phối xác suất liên tục liên hệ với tích phân ở ý nào?", "Tính xác suất bằng diện tích dưới đường cong", "Tính bằng tổ hợp", "Tính bằng đạo hàm", "Không liên hệ", "Tính xác suất bằng diện tích dưới đường cong");
 
         return map;
     }

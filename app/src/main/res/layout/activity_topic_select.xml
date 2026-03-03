@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="#FFFDE7"
+    android:background="@color/silver_bg"
     android:padding="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -15,7 +15,7 @@
         android:text="📘 Chủ đề"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#0D47A1"
+        android:textColor="@color/silver_text_primary"
         android:layout_marginBottom="12dp" />
 
     <!-- Gợi ý độ khó hiện tại -->
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="🔹 Độ khó hiện tại: Trung bình"
         android:textSize="18sp"
-        android:textColor="#BF360C"
+        android:textColor="@color/silver_text_secondary"
         android:layout_marginBottom="16dp" />
 
 
@@ -34,8 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="📊 Xem thống kê"
-        android:backgroundTint="#1976D2"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/silver_button"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp" />
 
     <!-- Danh sách chủ đề -->
@@ -44,9 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="#BDBDBD"
+        android:divider="@color/silver_surface"
         android:dividerHeight="1dp"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:padding="8dp"
         android:elevation="2dp" />
 
