@@ -45,7 +45,15 @@
             android:id="@+id/tvAuthors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tác giả: Nguyễn Thị Thanh - Nguyễn Trung Chiến"
+            android:text="Tác giả"
+            android:textSize="16sp"
+            android:textColor="#5F6B79"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tvAuthors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nguyễn Thị Thanh - Nguyễn Trung Chiến"
             android:textSize="16sp"
             android:textColor="#5F6B79"
             android:gravity="center"/>
