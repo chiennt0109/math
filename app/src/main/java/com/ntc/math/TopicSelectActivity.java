@@ -19,6 +19,7 @@ import java.util.List;
 public class TopicSelectActivity extends AppCompatActivity {
 
     private TextView tvHeader, tvDifficultyInfo;
+    private android.widget.Button btnStats;
     private ListView lvTopics;
     private int currentClass;
     private List<String> topics;
@@ -31,10 +32,12 @@ public class TopicSelectActivity extends AppCompatActivity {
         tvHeader = findViewById(R.id.tvHeader);
         tvDifficultyInfo = findViewById(R.id.tvDifficultyInfo);
         lvTopics = findViewById(R.id.lvTopics);
+        btnStats = findViewById(R.id.btnStats);
 
         // Lấy khối lớp hiện tại
         currentClass = AdaptiveManager.getCurrentClass(this);
-        tvHeader.setText("📚 Chủ đề khối lớp " + currentClass);
+        int suggestedClass = AdaptiveManager.getSuggestedClass(this);
+        tvHeader.setText("📚 Chủ đề khối lớp " + currentClass + " | Gợi ý hiện tại: Lớp " + suggestedClass);
 
         // Lấy danh sách chủ đề theo lớp
         topics = AdaptiveManager.getTopicsForGrade(currentClass);
@@ -44,11 +47,15 @@ public class TopicSelectActivity extends AppCompatActivity {
             return;
         }
 
+        tvDifficultyInfo.setText("🔹 Gợi ý đầu vào: chọn chủ đề phù hợp với cấp hiện tại của bạn.");
+
         // Hiển thị danh sách chủ đề
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, topics
         );
         lvTopics.setAdapter(adapter);
+
+        btnStats.setOnClickListener(v -> startActivity(new Intent(this, StatsActivity.class)));
 
         lvTopics.setOnItemClickListener((AdapterView<?> parent, android.view.View view, int position, long id) -> {
             String topic = topics.get(position);
