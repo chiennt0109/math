@@ -2,6 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="splash_bg">#2196F3</color> <!-- xanh da trời tươi -->
+    <color name="splash_bg">#8C99A8</color>
 
-    <color name="app_primary">#4A90E2</color> <color name="app_primary_dark">#3A77C8</color> <color name="app_accent">#F8E71C</color> <color name="correct_green">#7ED321</color> <color name="incorrect_red">#D0021B</color> <color name="light_gray_background">#F5F5F7</color> <color name="dark_text">#4A4A4A</color> </resources>
+    <color name="app_primary">#7A8899</color>
+    <color name="app_primary_dark">#5F6B79</color>
+    <color name="app_accent">#C0C7D1</color>
+    <color name="correct_green">#4CAF50</color>
+    <color name="incorrect_red">#C62828</color>
+    <color name="light_gray_background">#EEF1F4</color>
+    <color name="dark_text">#2F3742</color>
+
+    <color name="silver_bg">#EEF1F4</color>
+    <color name="silver_surface">#DDE3EA</color>
+    <color name="silver_text_primary">#2F3742</color>
+    <color name="silver_text_secondary">#5F6B79</color>
+    <color name="silver_accent">#8A97A8</color>
+    <color name="silver_button">#7A8899</color>
+</resources>

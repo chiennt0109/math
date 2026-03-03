@@ -4,15 +4,17 @@
     android:gravity="center_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8F4FF"
+    android:background="@color/silver_bg"
     android:padding="24dp">
 
     <TextView
         android:id="@+id/tvSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="🎯 Điểm số"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#004AAD"
+        android:textColor="@color/silver_text_primary"
         android:layout_marginBottom="12dp" />
 
     <ProgressBar
@@ -21,14 +23,16 @@
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:max="100"
-        android:progressTint="#2196F3"
+        android:progressTint="@color/silver_accent"
         android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/tvSuggestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Gợi ý học tập"
         android:textSize="18sp"
-        android:textColor="#333333"
+        android:textColor="@color/silver_text_primary"
         android:gravity="center"
         android:layout_marginBottom="24dp" />
 
@@ -37,16 +41,16 @@
         android:text="🔁 Làm lại chủ đề này"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#4CAF50"
-        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/silver_button"
+        android:textColor="@color/white"
         android:layout_marginBottom="12dp" />
 
     <Button
         android:id="@+id/btnHome"
-        android:text="🏠 Quay về chọn lớp"
+        android:text="🏠 Quay về chủ đề"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#2196F3"
-        android:textColor="#FFFFFF" />
+        android:backgroundTint="@color/silver_accent"
+        android:textColor="@color/white" />
 
 </LinearLayout>

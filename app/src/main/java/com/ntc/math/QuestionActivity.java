@@ -21,6 +21,8 @@ public class QuestionActivity extends AppCompatActivity {
     private String topic;
     private String difficulty;
     private int grade;
+    private int currentVerticalLevel;
+    private final Map<String, Integer> wrongByAxis = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +41,12 @@ public class QuestionActivity extends AppCompatActivity {
         topic = getIntent().getStringExtra("topic");
         grade = getIntent().getIntExtra("grade", 1);
         difficulty = AdaptiveManager.getStartingDifficulty(this, topic);
+        currentVerticalLevel = AdaptiveManager.getCurrentVerticalLevel(this, topic);
 
         tvTopic.setText("📘 Chủ đề: " + topic);
-        tvDifficulty.setText("⚙️ Độ khó: " + difficulty);
+        tvDifficulty.setText("⚙️ Độ khó: " + difficulty + " | Cấp: " + currentVerticalLevel);
 
-        questions = QuestionGenerator.generate(topic, difficulty);
+        questions = QuestionGenerator.generate(topic, difficulty, currentVerticalLevel, grade);
         loadQuestion();
 
         btnSubmit.setOnClickListener(v -> checkAnswer());
@@ -87,10 +90,29 @@ public class QuestionActivity extends AppCompatActivity {
 
         AdaptiveManager.recordAnswer(this, topic, isCorrect);
 
+        int questionLevel = q.getLevel() > 0 ? q.getLevel() : currentVerticalLevel;
+        int updatedLevel = AdaptiveManager.recordVerticalAttempt(
+                this,
+                topic,
+                q.getSkillKey().isEmpty() ? (topic + "|L" + questionLevel) : q.getSkillKey(),
+                questionLevel,
+                isCorrect
+        );
+
+        if (updatedLevel != currentVerticalLevel) {
+            currentVerticalLevel = updatedLevel;
+            tvDifficulty.setText("⚙️ Độ khó: " + difficulty + " | Cấp: " + currentVerticalLevel);
+            questions = QuestionGenerator.generate(topic, difficulty, currentVerticalLevel, grade);
+            current = Math.min(current, questions.size() - 1);
+            Toast.makeText(this, "🔁 Hệ thống tự điều chỉnh về cấp " + currentVerticalLevel, Toast.LENGTH_SHORT).show();
+        }
+
         if (isCorrect) {
             correctCount++;
             Toast.makeText(this, "✅ Chính xác!", Toast.LENGTH_SHORT).show();
         } else {
+            String axis = extractAxisFromQuestion(q);
+            wrongByAxis.put(axis, wrongByAxis.getOrDefault(axis, 0) + 1);
             Toast.makeText(this, "❌ Sai. Đáp án đúng là: " + q.getCorrectAnswer(), Toast.LENGTH_LONG).show();
         }
 
@@ -103,6 +125,29 @@ public class QuestionActivity extends AppCompatActivity {
         loadQuestion();
     }
 
+    private String extractAxisFromQuestion(Question q) {
+        String skillKey = q.getSkillKey();
+        if (skillKey != null && skillKey.contains("|")) {
+            String[] parts = skillKey.split("\\|");
+            if (parts.length > 0) {
+                return parts[parts.length - 1];
+            }
+        }
+        return "Hàm số – đạo hàm – tích phân";
+    }
+
+    private String getWeakestAxis() {
+        String axis = "Không có";
+        int max = 0;
+        for (Map.Entry<String, Integer> e : wrongByAxis.entrySet()) {
+            if (e.getValue() > max) {
+                axis = e.getKey();
+                max = e.getValue();
+            }
+        }
+        return axis;
+    }
+
     private void showResult() {
         float percent = (correctCount * 100f) / questions.size();
         AdaptiveManager.onSessionEnd(this, topic, percent);
@@ -113,6 +158,7 @@ public class QuestionActivity extends AppCompatActivity {
         Intent i = new Intent(this, ProgressActivity.class);
         i.putExtra("topic", topic);
         i.putExtra("score", percent);
+        i.putExtra("weak_axis", getWeakestAxis());
         startActivity(i);
         finish();
     }
