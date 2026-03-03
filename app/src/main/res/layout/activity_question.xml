@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F9FF">
+    android:background="@color/silver_bg">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
-            android:textColor="#004AAD" />
+            android:textColor="@color/silver_text_primary" />
 
         <TextView
             android:id="@+id/tvDifficulty"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:textColor="#333333" />
+            android:textColor="@color/silver_text_primary" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -37,7 +37,7 @@
             android:layout_height="8dp"
             android:progress="0"
             android:max="100"
-            android:progressTint="#4CAF50"
+            android:progressTint="@color/silver_button"
             android:layout_marginBottom="12dp" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#222222"
+            android:textColor="@color/silver_text_primary"
             android:gravity="center"
             android:layout_marginBottom="16dp" />
 
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:textColor="#666666" />
+            android:textColor="@color/silver_text_secondary" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -72,8 +72,8 @@
             android:text="✅ Trả lời"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/silver_button"
+            android:textColor="@color/white"
             android:layout_marginBottom="8dp" />
 
         <Button
@@ -81,8 +81,8 @@
             android:text="➡️ Câu tiếp theo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#2196F3"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/silver_accent"
+            android:textColor="@color/white"
             android:visibility="gone" />
 
     </LinearLayout>
