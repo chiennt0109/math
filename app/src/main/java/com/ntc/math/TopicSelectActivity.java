@@ -65,6 +65,7 @@ public class TopicSelectActivity extends AppCompatActivity {
             // Chuyển sang màn câu hỏi
             Intent i = new Intent(this, QuestionActivity.class);
             i.putExtra("topic", topic);
+            i.putExtra("grade", currentClass);
             startActivity(i);
         });
     }

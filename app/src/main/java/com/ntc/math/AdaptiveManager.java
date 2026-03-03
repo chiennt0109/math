@@ -20,6 +20,11 @@ public class AdaptiveManager {
     private static final String KEY_SUGGESTED_CLASS = "suggested_class";
     private static final String KEY_TOTAL_CORRECT = "total_correct";
     private static final String KEY_TOTAL_WRONG = "total_wrong";
+    private static final String KEY_PRACTICE_TEST_COUNT = "practice_test_count";
+    private static final String KEY_LAST_PRACTICE_SCORE = "last_practice_score";
+    private static final String KEY_WEAK_AXIS_PREFIX = "weak_axis_";
+
+    public static final String PRACTICE_TOPIC = "Luyện đề tổng hợp theo khối";
 
     private static final String KEY_VERTICAL_LEVEL = "vertical_level_";
     private static final String KEY_LEVEL_ATTEMPT_PREFIX = "vertical_attempt_";
@@ -208,6 +213,7 @@ public class AdaptiveManager {
                 );
             case 10:
                 return Arrays.asList(
+                        PRACTICE_TOPIC,
                         "Lớp 10 - Hàm số bậc hai - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị",
                         "Lớp 10 - Hàm số bậc hai - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị",
                         "Lớp 10 - Hàm số bậc hai - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm",
@@ -215,6 +221,7 @@ public class AdaptiveManager {
                 );
             case 11:
                 return Arrays.asList(
+                        PRACTICE_TOPIC,
                         "Lớp 11 - Hàm lượng giác & liên tục - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị",
                         "Lớp 11 - Hàm lượng giác & liên tục - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị",
                         "Lớp 11 - Hàm lượng giác & liên tục - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm",
@@ -222,6 +229,7 @@ public class AdaptiveManager {
                 );
             case 12:
                 return Arrays.asList(
+                        PRACTICE_TOPIC,
                         "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 1: Khái niệm, thay số, nhận dạng đồ thị",
                         "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 2: Đồng biến/nghịch biến, tập xác định, vẽ đồ thị",
                         "Lớp 12 - Ứng dụng đạo hàm & mũ-logarit - Cấp 3: Cực trị, GTLN-GTNN, biện luận nghiệm",
@@ -265,6 +273,44 @@ public class AdaptiveManager {
         int total = c + w;
         if (total == 0) return 0f;
         return (c * 100f) / total;
+    }
+
+    public static void recordPracticeTestResult(Context ctx, float score, String weakAxis) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        int count = sp.getInt(KEY_PRACTICE_TEST_COUNT, 0) + 1;
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putInt(KEY_PRACTICE_TEST_COUNT, count);
+        editor.putFloat(KEY_LAST_PRACTICE_SCORE, score);
+        if (weakAxis != null && !weakAxis.isEmpty() && !"Không có".equals(weakAxis)) {
+            String key = KEY_WEAK_AXIS_PREFIX + weakAxis;
+            editor.putInt(key, sp.getInt(key, 0) + 1);
+        }
+        editor.apply();
+    }
+
+    public static int getPracticeTestCount(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getInt(KEY_PRACTICE_TEST_COUNT, 0);
+    }
+
+    public static float getLastPracticeScore(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        return sp.getFloat(KEY_LAST_PRACTICE_SCORE, 0f);
+    }
+
+    public static String getWeakestAxis(Context ctx) {
+        SharedPreferences sp = ctx.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        String[] axes = {"Hàm số – đạo hàm – tích phân", "Tổ hợp – xác suất", "Hình học giải tích"};
+        String result = "Không có";
+        int max = 0;
+        for (String axis : axes) {
+            int c = sp.getInt(KEY_WEAK_AXIS_PREFIX + axis, 0);
+            if (c > max) {
+                max = c;
+                result = axis;
+            }
+        }
+        return result;
     }
 
     // ==========================================================

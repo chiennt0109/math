@@ -14,10 +14,14 @@ public class QuestionGenerator {
     private static final Map<String, List<Question>> VERTICAL_TOPIC_BANK = createVerticalTopicBank();
 
     public static List<Question> generate(String topic, String difficulty) {
-        return generate(topic, difficulty, 0);
+        return generate(topic, difficulty, 0, 0);
     }
 
     public static List<Question> generate(String topic, String difficulty, int preferredLevel) {
+        return generate(topic, difficulty, preferredLevel, 0);
+    }
+
+    public static List<Question> generate(String topic, String difficulty, int preferredLevel, int grade) {
         List<Question> list = new ArrayList<>();
 
         int count = switch (difficulty) {
@@ -25,6 +29,10 @@ public class QuestionGenerator {
             case "Trung bình" -> 7;
             default -> 10;
         };
+
+        if (AdaptiveManager.PRACTICE_TOPIC.equals(topic)) {
+            return generatePracticeExam(grade, 10);
+        }
 
         if (VERTICAL_TOPIC_BANK.containsKey(topic)) {
             List<Question> pool = VERTICAL_TOPIC_BANK.get(topic);
@@ -46,6 +54,52 @@ public class QuestionGenerator {
             if (q != null) list.add(q);
         }
         return list;
+    }
+
+    private static List<Question> generatePracticeExam(int grade, int totalQuestions) {
+        List<Question> exam = new ArrayList<>();
+        List<String> gradeTopics = getVerticalTopicsForGrade(grade);
+        if (gradeTopics.isEmpty()) {
+            return exam;
+        }
+
+        int basic = Math.round(totalQuestions * 0.30f);
+        int medium = Math.round(totalQuestions * 0.30f);
+        int kha = Math.round(totalQuestions * 0.20f);
+        int gioi = totalQuestions - basic - medium - kha;
+
+        appendQuestionsByLevel(exam, gradeTopics, 1, basic);
+        appendQuestionsByLevel(exam, gradeTopics, 2, medium);
+        appendQuestionsByLevel(exam, gradeTopics, 3, kha);
+        appendQuestionsByLevel(exam, gradeTopics, 4, gioi);
+        Collections.shuffle(exam);
+        return exam;
+    }
+
+    private static void appendQuestionsByLevel(List<Question> out, List<String> gradeTopics, int level, int count) {
+        List<Question> pool = new ArrayList<>();
+        for (String topic : gradeTopics) {
+            List<Question> questions = VERTICAL_TOPIC_BANK.getOrDefault(topic, Collections.emptyList());
+            for (Question q : questions) {
+                if (q.getLevel() == level) pool.add(q);
+            }
+        }
+        if (pool.isEmpty()) return;
+        for (int i = 0; i < count; i++) {
+            out.add(pool.get(rand.nextInt(pool.size())));
+        }
+    }
+
+    private static List<String> getVerticalTopicsForGrade(int grade) {
+        if (grade < 10 || grade > 12) return Collections.emptyList();
+        List<String> all = new ArrayList<>(VERTICAL_TOPIC_BANK.keySet());
+        Collections.sort(all);
+        String prefix = "Lớp " + grade + " - ";
+        List<String> result = new ArrayList<>();
+        for (String topic : all) {
+            if (topic.startsWith(prefix)) result.add(topic);
+        }
+        return result;
     }
 
     private static Question createQuestion(String topic, String diff) {

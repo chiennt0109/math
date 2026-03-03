@@ -23,6 +23,7 @@ public class ProgressActivity extends AppCompatActivity {
     private String topic;
     private float score;
     private int currentClass;
+    private String weakAxis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class ProgressActivity extends AppCompatActivity {
         topic = getIntent().getStringExtra("topic");
         score = getIntent().getFloatExtra("score", 0f);
         currentClass = AdaptiveManager.getCurrentClass(this);
+        weakAxis = getIntent().getStringExtra("weak_axis");
 
         showResult();
         setupButtons();
@@ -57,6 +59,15 @@ public class ProgressActivity extends AppCompatActivity {
     }
 
     private String getSuggestionText(float score, String diff) {
+        if (AdaptiveManager.PRACTICE_TOPIC.equals(topic)) {
+            AdaptiveManager.recordPracticeTestResult(this, score, weakAxis);
+            String axis = (weakAxis == null || weakAxis.isEmpty()) ? "Không có" : weakAxis;
+            if (score < 60 && !"Không có".equals(axis)) {
+                return "📝 Kết quả luyện đề: cần ôn thêm trục '" + axis + "'. Hệ thống đã lưu để gợi ý lần sau.";
+            }
+            return "✅ Kết quả luyện đề đã được lưu. Tiếp tục luyện đều 3 trục để ổn định phong độ.";
+        }
+
         int suggestedClass = currentClass;
         if (score >= 85) {
             AdaptiveManager.increaseDifficulty(this, topic);

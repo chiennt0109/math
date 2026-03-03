@@ -22,12 +22,19 @@ public class StatsActivity extends AppCompatActivity {
         int totalCorrect = AdaptiveManager.getTotalCorrect(this);
         int totalWrong = AdaptiveManager.getTotalWrong(this);
         float accuracy = AdaptiveManager.getOverallAccuracy(this);
+        int practiceCount = AdaptiveManager.getPracticeTestCount(this);
+        float lastPracticeScore = AdaptiveManager.getLastPracticeScore(this);
+        String weakestAxis = AdaptiveManager.getWeakestAxis(this);
 
         tvCurrentStatus.setText("📌 Tình trạng hiện tại\n"
                 + "- Lớp đã chọn ban đầu: " + currentClass + "\n"
                 + "- Gợi ý cấp học hiện tại: Lớp " + suggestedClass + "\n"
-                + "- Độ chính xác tổng: " + String.format(Locale.US, "%.1f%%", accuracy));
+                + "- Độ chính xác tổng: " + String.format(Locale.US, "%.1f%%", accuracy) + "\n"
+                + "- Trục cần ôn nhiều nhất: " + weakestAxis);
 
-        tvCounts.setText("✅ Đúng: " + totalCorrect + "\n❌ Sai: " + totalWrong + "\n🧮 Tổng câu đã làm: " + (totalCorrect + totalWrong));
+        tvCounts.setText("✅ Đúng: " + totalCorrect + "\n❌ Sai: " + totalWrong
+                + "\n🧮 Tổng câu đã làm: " + (totalCorrect + totalWrong)
+                + "\n📝 Số lần luyện đề: " + practiceCount
+                + "\n📉 Điểm luyện đề gần nhất: " + String.format(Locale.US, "%.1f%%", lastPracticeScore));
     }
 }
